@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Builder - Mobile Ops</title>
+    
+    <!-- Suggest landscape mode for mobile devices -->
+    <link rel="manifest" href="data:application/json;base64,ewogICAgIm5hbWUiOiAiVGhlIEJ1aWxkZXIiLAogICAgInNob3J0X25hbWUiOiAiQnVpbGRlciIsCiAgICAiZGlzcGxheSI6ICJmdWxsc2NyZWVuIiwKICAgICJvcmllbnRhdGlvbiI6ICJsYW5kc2NhcGUiCn0=">
+    
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+
+    <!-- Mobile Start / Fullscreen Overlay -->
+    <!-- Only visible on mobile devices to force fullscreen and remove URL bar -->
+    <div id="mobile-overlay">
+        <div class="mobile-content">
+            <h2>SYSTEM READY</h2>
+            <p>Full Immersion Required</p>
+            <button id="fullscreen-btn">ENTER LANDSCAPE MODE</button>
+        </div>
+    </div>
+
+    <!-- Orientation Lock Screen (Mobile Portrait) -->
+    <!-- Keeps existing logic for when they are in portrait mode inside the game -->
+    <div id="orientation-lock">
+        <div class="icon">⟳</div>
+        <h2>ROTATE DEVICE</h2>
+        <p>Landscape Mode Required for Neural Link</p>
+    </div>
+
+    <!-- Left Controls: UP and LEFT -->
+    <div class="d-group" id="d-left-group">
+        <div class="d-btn btn-up" data-dir="up">▲</div>
+        <div class="d-btn btn-left" data-dir="left">◀</div>
+    </div>
+
+    <!-- Right Controls: DOWN and RIGHT -->
+    <div class="d-group" id="d-right-group">
+        <div class="d-btn btn-right" data-dir="right">▶</div>
+        <div class="d-btn btn-down" data-dir="down">▼</div>
+    </div>
+
+    <!-- UI Overlay Layer -->
+    <div id="ui-layer">
+        <div id="hud-top">
+            <span>TIME: <span id="survival-time">0.0s</span></span>
+            <span>ENEMIES: <span id="enemy-count">1</span></span>
+            <span>NEXT WAVE: <span id="wave-timer">5.0</span>s</span>
+        </div>
+
+        <div id="start-msg">
+            <div>MAZE PROTOCOL INITIALIZED</div>
+            <div style="font-size: 0.8em; color: #fff; margin-top: 10px;">MOVE TO DISSOLVE WALLS</div>
+        </div>
+        
+        <div id="game-over">
+            <h1 id="death-reason">TERMINATED</h1>
+            <p>Cornered in the maze.</p>
+            <p style="font-size: 0.9em; color: #00f0ff;">SURVIVED: <span id="final-time">0.0s</span></p>
+            <button id="reset-btn">REBOOT SYSTEM</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="reset-btn-corner">Reset</button>
+    </div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Link to external JavaScript -->
+    <script src="js/game.js"></script>
+</body>
+</html>
